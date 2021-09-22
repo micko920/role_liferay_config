@@ -1,0 +1,10 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+  vars_files:
+    - ../env.yml
+
+  tasks:
+    - name: This Docker Test is skipped
+      debug: "Skipped"

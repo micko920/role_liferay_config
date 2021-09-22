@@ -1,0 +1,38 @@
+---
+dependency:
+  name: galaxy
+  options:
+    ignore-certs: true
+    ignore-errors: true
+    role-file: molecule/requirements.yml
+
+driver:
+  name: docker
+platforms:
+  - name: "homelab-systemd-local-${role_under_test:-norole}"
+    image: "${MOLECULE_DOCKER_SYSTEMD_IMAGE:-homelab-systemd:local}"
+    command: "/sbin/init"
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    exposed_ports:
+      - 80
+      - 443
+      - 3838
+      - 8080
+      - 8787
+      - 9090
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+    capabilities:
+      - SYS_ADMIN
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      all:
+        ansible_python_interpreter: /usr/bin/python3
+verifier:
+  name: testinfra

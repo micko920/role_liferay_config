@@ -1,0 +1,61 @@
+---
+
+# vars file for liferay
+liferay_archives:
+  "7.3.4":
+    mirror: "https://releases-cdn.liferay.com/portal"
+    version: "7.3.4"
+    tomcat:
+      version: "9.0.33"
+      directory: "tomcat-9.0.33"
+    release: "GA5"
+    edition: "ce"
+    bundle_type: "tomcat"
+    tag: "20200811154319029"
+    file_type: "tar.gz"
+    url_path: "7.3.4-ga5"
+    file: "liferay-ce-portal-tomcat-7.3.4-ga5-20200811154319029.tar.gz"
+    directory: "liferay-ce-portal-7.3.4-ga5"
+  "7.3":
+    mirror: "https://github.com/liferay/liferay-portal/releases/download"
+    version: "7.3.0"
+    tomcat:
+      version: "9.0.17"
+      directory: "tomcat-9.0.17"
+    release: "GA1"
+    edition: "ce"
+    bundle_type: "tomcat"
+    tag: "20200127150653953"
+    file_type: "tar.gz"
+    url_path: "7.3.0-ga1"
+    file: "liferay-ce-portal-tomcat-7.3.0-ga1-20200127150653953.tar.gz"
+    directory: "liferay-ce-portal-7.3.0-ga1"
+  "7.2":
+    mirror: "https://downloads.sourceforge.net/project/lportal/Liferay%20Portal"
+    version: "7.2.1"
+    tomcat:
+      version: "9.0.17"
+      directory: "tomcat-9.0.17"
+    release: "GA2"
+    edition: "ce"
+    bundle_type: "tomcat"
+    tag: "20191111141448326"
+    file_type: "tar.gz"
+    url_path: "7.2.1%20GA2"
+    file: "liferay-ce-portal-tomcat-7.2.1-ga2-20191111141448326.tar.gz"
+    directory: "liferay-ce-portal-7.2.1-ga2"
+
+liferay_mirror: "{{ liferay_archives[liferay_version]['mirror'] }}"
+
+# yamllint disable-line rule:line-length
+liferay_url: "{{ liferay_mirror }}/{{ liferay_archives[liferay_version]['url_path'] }}/{{ liferay_archives[liferay_version]['file'] }}"   # noqa 204
+
+liferay_home: "{{ liferay_dest }}/{{ liferay_archives[liferay_version]['directory'] }}"   # noqa 204
+liferay_deploy: "{{ liferay_home }}/deploy"
+liferay_tomcat_home: "{{ liferay_home }}/{{ liferay_archives[liferay_version]['tomcat']['directory'] }}" # noqa 204
+liferay_osgi_deploy: "{{ liferay_home }}/osgi/modules"
+liferay_override_deploy: "{{ liferay_home }}/osgi/marketplace/override"
+liferay_war_deploy: "{{ liferay_home }}/osgi/war"
+
+liferay_service_name: "tomcat-liferay"
+liferay_service_description: "Start/Stop Tomcat and Liferay server"

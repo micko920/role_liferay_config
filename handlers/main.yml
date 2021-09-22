@@ -1,0 +1,11 @@
+---
+# handlers file for liferay
+- name: systemctl daemon-reload
+  systemd:
+    daemon_reload: yes
+
+- name: restart liferay instance
+  systemd:
+    name: "{{ lifera_service_name }}"
+    state: restarted
+  when: systemd_pid_1 is defined and systemd_pid_1

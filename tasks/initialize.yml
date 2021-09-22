@@ -1,0 +1,49 @@
+---
+- name: Add the liferay group
+  group:
+    name: "{{ liferay_group }}"
+    state: present
+
+- name: Add the liferay user
+  user:
+    name: "{{ liferay_user }}"
+    password_lock: true
+    shell: /bin/bash
+    append: true
+
+- name: Check to see if already installed
+  stat:
+    path: "{{ liferay_dest }}"
+  register: stat_liferay_dest
+
+- name: configure liferay instance - portal-ext.properties
+  template:
+    src: portal-ext.properties.j2
+    dest: "{{ liferay_home }}/portal-ext.properties"
+
+- name: configure liferay portal config
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ liferay_home }}/osgi/configs/{{ item }}"
+  with_items:
+    - com.liferay.portal.store.file.system.configuration.AdvancedFileSystemStoreConfiguration.cfg
+
+# - name: configure liferay elasticsearch config
+#   template:
+#     src: "{{ item }}.j2"
+#     dest: "{{ liferay_home }}/osgi/configs/{{ item }}"
+#   with_items:
+#     - com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConfiguration.config
+#   when:
+#     - elasticsearch_remote_enabled == "true"
+
+# - name: Decode data and store as fact
+#   set_fact:
+#     config_data: "{{ new_config_file_content.content | b64decode }}"
+
+- name: Ensure Liferay is final state and enabled on boot.
+  systemd:
+    name: "{{ liferay_service_name }}"
+    state: "{{ liferay_final_state }}"
+    enabled: "{{ liferay_service_enabled }}"
+  when: systemd_pid_1 is defined and systemd_pid_1

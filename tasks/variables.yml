@@ -1,0 +1,15 @@
+---
+# Variable configuration.
+- name: Include OS-specific variables (Debian).
+  include_vars: "{{ ansible_distribution }}-{{ ansible_distribution_version.split('.')[0] }}.yml"
+  when: ansible_os_family == 'Debian'
+
+- name: Define liferay_version.
+  set_fact:
+    liferay_version: "{{ __liferay_version }}"
+  when: liferay_version is not defined
+
+- name: Define liferay_data_dir.
+  set_fact:
+    liferay_dest: "{{ __liferay_dest }}"
+  when: liferay_dest is not defined

@@ -1,0 +1,7 @@
+---
+roles:
+  - role: "micko920.homelab_base_system"
+  - role: "micko920.role_java"
+  - role: "micko920.role_gitlfs"
+  - role: "micko920.role_createservice"
+  - role: "micko920.role_liferay"

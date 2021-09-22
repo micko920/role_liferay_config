@@ -1,0 +1,24 @@
+---
+
+liferay_user: "liferay"
+liferay_group: "liferay"
+liferay_final_state: "stopped"
+liferay_service_enabled: true
+
+liferay_document_library_root: "/data/liferay/document_library"
+liferay_database: "liferaydb"
+admin_email: "admin@liferay.portal.local"
+admin_email_name: "Liferay Administrator"
+cluster_enabled: "false"
+security_mode: "domain"
+domains_allowed: "*.local,localhost"
+ips_allowed: ""
+web_server_hostname: ""
+
+
+elasticsearch_cluster_name: "es_cluster"
+elasticsearch_cluster_addresses:
+  - "es-node-1:9300"
+  - "es-node-2:9300"
+
+elasticsearch_remote_enabled: "false"

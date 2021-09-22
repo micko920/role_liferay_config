@@ -1,0 +1,14 @@
+---
+- include_tasks: is_systemd.yml
+
+# Variable configuration.
+- include_tasks: variables.yml
+
+- include_tasks: initialize.yml
+
+- name: Set final state and enable liferay instance
+  systemd:
+    name: "{{ liferay_service_name }}"
+    state: "{{ liferay_final_state }}"
+    enabled: yes
+  when: systemd_pid_1 is defined and systemd_pid_1

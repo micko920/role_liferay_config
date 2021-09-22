@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+  options:
+    ignore-certs: true
+    ignore-errors: true
+    role-file: molecule/requirements.yml
+
+driver:
+  name: ec2
+platforms:
+  - name: instance
+    # Debian Bullseye ami
+    image_owner: "136693071363"
+    image_name: "${MOLECULE_AWS_IMAGE:-debian-11-amd64}-*"
+    instance_type: t2.micro
+    vpc_subnet_id: "${AWS_MOLECULE_SUBNET}"
+    tags:
+      - Name: molecule_instance
+provisioner:
+  name: ansible
+  log: true
+  inventory:
+    group_vars:
+      all:
+        ansible_python_interpreter: /usr/bin/python3
+verifier:
+  name: testinfra
