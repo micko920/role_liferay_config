@@ -28,6 +28,17 @@
   with_items:
     - com.liferay.portal.store.file.system.configuration.AdvancedFileSystemStoreConfiguration.cfg
 
+
+- name: CVE-2021-44228 - log4j parameter expansion
+  blockinfile:
+    path: "{{ liferay_tomcat_home }}/bin/catalina.sh"
+    insertafter: "JAVA_OPTS=\"$JAVA_OPTS $JSSE_OPTS\""
+    block: |
+      #  CVE-2021-44228 - log4j parameter expansion
+      LOG4J_FORMAT_MSG_NO_LOOKUPS="true"
+      JAVA_OPTS="$JAVA_OPTS -Dlog4j2.formatMsgNoLookups=true"
+
+
 # - name: configure liferay elasticsearch config
 #   template:
 #     src: "{{ item }}.j2"
