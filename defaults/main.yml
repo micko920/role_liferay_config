@@ -14,11 +14,14 @@ security_mode: "domain"
 domains_allowed: "*.local,localhost"
 ips_allowed: ""
 web_server_hostname: ""
+openoffice:
+  state: absent
+  address: "127.0.0.1"
+  port: "8100"
 
+elasticsearch_cluster:
+  state: absent
+  name: "LiferayElasticsearchCluster"
+  addresses:
+  - "localhost:9200"
 
-elasticsearch_cluster_name: "es_cluster"
-elasticsearch_cluster_addresses:
-  - "es-node-1:9300"
-  - "es-node-2:9300"
-
-elasticsearch_remote_enabled: "false"

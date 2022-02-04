@@ -27,6 +27,7 @@
     dest: "{{ liferay_home }}/osgi/configs/{{ item }}"
   with_items:
     - com.liferay.portal.store.file.system.configuration.AdvancedFileSystemStoreConfiguration.cfg
+    - com.liferay.document.library.document.conversion.internal.configuration.OpenOfficeConfiguration.config
 
 
 - name: CVE-2021-44228 - log4j parameter expansion
@@ -39,14 +40,22 @@
       JAVA_OPTS="$JAVA_OPTS -Dlog4j2.formatMsgNoLookups=true"
 
 
-# - name: configure liferay elasticsearch config
-#   template:
-#     src: "{{ item }}.j2"
-#     dest: "{{ liferay_home }}/osgi/configs/{{ item }}"
-#   with_items:
-#     - com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConfiguration.config
-#   when:
-#     - elasticsearch_remote_enabled == "true"
+- name: configure liferay elasticsearch config
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ liferay_home }}/osgi/configs/{{ item }}"
+  with_items:
+    - com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConfiguration.config
+
+- name: configure liferay elasticsearch connection config
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ liferay_home }}/osgi/configs/com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConnectionConfiguration-{{ elasticsearch_cluster.name }}.config"
+  with_items:
+    - com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConnectionConfiguration-id.config.j2
+  when:
+    - elasticsearch_cluster.state|lower == "present"
+
 
 # - name: Decode data and store as fact
 #   set_fact:

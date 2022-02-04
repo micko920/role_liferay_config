@@ -1,4 +1,4 @@
 cacheEnabled="true"
-serverEnabled="true"
-serverHost="127.0.0.1"
-serverPort="8100"
+serverEnabled="{{ 'true' if openoffice.state|lower == 'present' else 'false' }}"
+serverHost="{{ openoffice.address }}"
+serverPort="{{ openoffice.port }}"

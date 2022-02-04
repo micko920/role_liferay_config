@@ -2,6 +2,20 @@
 
 # vars file for liferay
 liferay_archives:
+  "7.4.3.9":
+    mirror: "https://github.com/liferay/liferay-portal/releases/download"
+    version: "7.4.3.9"
+    tomcat:
+      version: "9.0.56"
+      directory: "tomcat-9.0.56"
+    release: "GA9"
+    edition: "ce"
+    bundle_type: "tomcat"
+    tag: "20220125123415632"
+    file_type: "tar.gz"
+    url_path: "7.4.3.9-ga9"
+    file: "liferay-ce-portal-tomcat-7.4.3.9-ga9-20220125123415632.tar.gz"
+    directory: "liferay-ce-portal-7.4.3.9-ga9"
   "7.4.3.8":
     mirror: "https://github.com/liferay/liferay-portal/releases/download"
     version: "7.4.3.8"
