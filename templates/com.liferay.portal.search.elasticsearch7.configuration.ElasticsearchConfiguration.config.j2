@@ -1,12 +1,9 @@
-operationMode="REMOTE"
-transportAddresses=[ {{ elasticsearch_cluster.addresses| map("to_json") | join(',') }} ]
-clusterName={{ elasticsearch_cluster.name }}
 additionalConfigurations=""
 additionalIndexConfigurations=""
 additionalTypeMappings=""
 authenticationEnabled=B"false"
 bootstrapMlockAll=B"false"
-clusterName="LiferayElasticsearchCluster"
+clusterName={{ elasticsearch_cluster.name }}
 discoveryZenPingUnicastHostsPort="9300-9400"
 embeddedHttpPort=I"9201"
 httpCORSAllowOrigin="/https?:\\/\\/localhost(:[0-9]+)?/"
@@ -19,12 +16,10 @@ indexNumberOfShards=""
 logExceptionsOnly=B"true"
 networkBindHost=""
 networkHost=""
-networkHostAddresses=[ \
-  "http://localhost:9200", \
-  ]
+networkHostAddresses=[ {{ elasticsearch_cluster.addresses| map("to_json") | join(',') }} ]
 networkPublishHost=""
 nodeName=""
-operationMode="EMBEDDED"
+operationMode="{{ 'REMOTE' if elasticsearch_cluster.state|lower == 'present' else 'EMBEDDED'}}"
 overrideTypeMappings=""
 productionModeEnabled=B"false"
 proxyHost=""
