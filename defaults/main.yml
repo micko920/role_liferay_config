@@ -23,5 +23,5 @@ elasticsearch_cluster:
   state: absent
   name: "LiferayElasticsearchCluster"
   addresses:
-    - "http://localhost:9200"
+    - "http://localhost:9201"
 
