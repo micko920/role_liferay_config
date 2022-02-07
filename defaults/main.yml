@@ -10,9 +10,14 @@ liferay_database: "liferaydb"
 admin_email: "admin@liferay.portal.local"
 admin_email_name: "Liferay Administrator"
 cluster_enabled: "false"
-security_mode: "domain"
-domains_allowed: "*.local,localhost"
-ips_allowed: ""
+security_mode: "ip"
+company_id: "20099"
+domains_allowed:
+  - "*.local"
+  - "localhost"
+ips_allowed:
+  - "127.0.0.1"
+  - "SERVER_IP"
 web_server_hostname: ""
 openoffice:
   state: absent

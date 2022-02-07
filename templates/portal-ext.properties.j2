@@ -114,10 +114,3 @@
 # web.server.https.port=443
 {% endif %}
 
-  redirect.url.security.mode={{ security_mode }}
-{% if security_mode is defined and security_mode == "domain" %}
-  redirect.url.domains.allowed={{ domains_allowed }}
-{% endif %}
-{% if security_mode is defined and security_mode == "ip" %}
-  redirect.url.ips.allowed=127.0.0.1,{{ ips_allowed }},SERVER_IP
-{% endif %}

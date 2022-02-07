@@ -28,6 +28,7 @@
   with_items:
     - com.liferay.portal.store.file.system.configuration.AdvancedFileSystemStoreConfiguration.cfg
     - com.liferay.document.library.document.conversion.internal.configuration.OpenOfficeConfiguration.config
+    - com.liferay.redirect.internal.configuration.RedirectURLConfiguration~default.config
 
 
 - name: CVE-2021-44228 - log4j parameter expansion
@@ -50,7 +51,7 @@
 - name: configure liferay elasticsearch connection config
   template:
     src: "{{ item }}.j2"
-    dest: "{{ liferay_home }}/osgi/configs/com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConnectionConfiguration-{{ elasticsearch_cluster.name }}.config"
+    dest: "{{ liferay_home }}/osgi/configs/com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConnectionConfiguration~{{ elasticsearch_cluster.name }}.config"
   with_items:
     - com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConnectionConfiguration-id.config.j2
   when:

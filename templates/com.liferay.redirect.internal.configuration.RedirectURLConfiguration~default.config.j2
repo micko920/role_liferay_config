@@ -1,0 +1,8 @@
+companyId=L"{{ company_id}}"
+securityMode="{{ security_mode }}"
+{% if security_mode is defined and security_mode == "domain" %}
+allowedDomains=[ {{ domains_allowed| map("to_json") | join(',') }} ]
+{% endif %}
+{% if security_mode is defined and security_mode == "ip" %}
+allowedIPs=[ {{ ips_allowed| map("to_json") | join(',') }} ]
+{% endif %}
