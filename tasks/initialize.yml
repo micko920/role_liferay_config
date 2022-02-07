@@ -29,7 +29,8 @@
     - com.liferay.portal.store.file.system.configuration.AdvancedFileSystemStoreConfiguration.cfg
     - com.liferay.document.library.document.conversion.internal.configuration.OpenOfficeConfiguration.config
     - com.liferay.redirect.internal.configuration.RedirectURLConfiguration~default.config
-    - com.liferay.portal.security.antisamy.configuration.AntiSamyClassNameConfiguration~kb.config
+
+#- com.liferay.portal.security.antisamy.configuration.AntiSamyClassNameConfiguration~kb.config
 
 
 - name: CVE-2021-44228 - log4j parameter expansion
