@@ -60,6 +60,28 @@
   when:
     - elasticsearch_cluster.state|lower == "present"
 
+- name: configure liferay upgrade tool
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ liferay_home }}/tools/portal-tools-db-upgrade-client/{{ item }}"
+  with_items:
+    - app-server.properties
+    - portal-upgrade-database.properties
+    - portal-upgrade-ext.properties
+  when:
+    - database_upgrade.state|lower == "present"
+
+
+- name: Run database upgrade tool
+  become: true
+  become_user: "{{ liferay_user }}"
+  command: "./db_upgrade.sh -j \"-Dfile.encoding=UTF-8 -Duser.timezone=GMT -Xmx4096m\""
+  args:
+    chdir: "{{ liferay_home }}/tools/portal-tools-db-upgrade-client"
+    creates: "{{ liferay_home }}/tools/portal-tools-db-upgrade-client/logs/upgrade.log"
+  when:
+    - database_upgrade.state|lower == "present"
+
 
 # - name: Decode data and store as fact
 #   set_fact:

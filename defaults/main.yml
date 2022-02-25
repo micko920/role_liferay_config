@@ -24,6 +24,9 @@ openoffice:
   address: "127.0.0.1"
   port: "8100"
 
+database_upgrade:
+  state: absent
+
 elasticsearch_cluster:
   state: absent
   name: "LiferayElasticsearchCluster"
