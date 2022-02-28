@@ -29,7 +29,7 @@
 # company.security.strangers.with.mx=false
   company.security.strangers=false
 # counter.increment=2000
-  database.indexes.update.on.startup={{ startup.database_index_update }}
+  database.indexes.update.on.startup={{ 'true' if startup.database_index_update else 'false' }}
 # default.admin.email.address.prefix=liferay_test
 # default.landing.page.path=/frontpage
 # default.logout.page.path=/frontpage
@@ -44,7 +44,7 @@
   dl.store.impl=com.liferay.portal.store.file.system.AdvancedFileSystemStore
 # field.enable.com.liferay.portal.model.Contact.birthday=false
 # field.enable.com.liferay.portal.model.Contact.male=false
-  index.on.startup={{ startup.search_reindex }}
+  index.on.startup={{ 'true' if startup.search_reindex else 'false' }}
   index.on.startup.delay=60
 # index.filter.search.limit=2000
 # index.search.limit=2000
