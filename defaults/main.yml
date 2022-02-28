@@ -24,8 +24,10 @@ openoffice:
   address: "127.0.0.1"
   port: "8100"
 
-database_upgrade:
-  state: absent
+startup:
+  database_index_update: false
+  database_upgrade: false
+  search_reindex: false
 
 elasticsearch_cluster:
   state: absent

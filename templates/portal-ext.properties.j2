@@ -29,6 +29,7 @@
 # company.security.strangers.with.mx=false
   company.security.strangers=false
 # counter.increment=2000
+  database.indexes.update.on.startup={{ startup.database_index_update }}
 # default.admin.email.address.prefix=liferay_test
 # default.landing.page.path=/frontpage
 # default.logout.page.path=/frontpage
@@ -43,8 +44,17 @@
   dl.store.impl=com.liferay.portal.store.file.system.AdvancedFileSystemStore
 # field.enable.com.liferay.portal.model.Contact.birthday=false
 # field.enable.com.liferay.portal.model.Contact.male=false
+  index.on.startup={{ startup.search_reindex }}
+  index.on.startup.delay=60
 # index.filter.search.limit=2000
 # index.search.limit=2000
+  index.search.spell.checker.dictionary[en_US]=com/liferay/portal/search/dependencies/spellchecker/en_US.txt
+  index.search.spell.checker.dictionary[es_ES]=com/liferay/portal/search/dependencies/spellchecker/es_ES.txt
+  index.search.spell.checker.dictionary[es_FR]=com/liferay/portal/search/dependencies/spellchecker/es_FR.txt
+ index.search.spell.checker.supported.locales=\
+        en_US,\
+        es_ES,\
+        es_FR
 # javascript.fast.load=true
   jdbc.default.driverClassName=org.postgresql.Driver
   jdbc.default.idleConnectionTestPeriod=0

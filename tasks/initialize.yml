@@ -69,7 +69,7 @@
     - portal-upgrade-database.properties
     - portal-upgrade-ext.properties
   when:
-    - database_upgrade.state|lower == "present"
+    - startup.database_upgrade
 
 
 - name: Run database upgrade tool
@@ -80,7 +80,7 @@
     chdir: "{{ liferay_home }}/tools/portal-tools-db-upgrade-client"
     creates: "{{ liferay_home }}/tools/portal-tools-db-upgrade-client/logs/upgrade.log"
   when:
-    - database_upgrade.state|lower == "present"
+    - startup.database_upgrade
 
 
 # - name: Decode data and store as fact
