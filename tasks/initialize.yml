@@ -11,6 +11,16 @@
     shell: /bin/bash
     append: true
 
+# patch permissions on data
+- name: Ensure data directory exists
+  file:
+    path: "/data"
+    owner: "root"
+    group: "root"
+    state: directory
+    mode: 0755
+    recurse: false
+
 - name: Check to see if already installed
   stat:
     path: "{{ liferay_dest }}"
