@@ -2,6 +2,48 @@
 
 # vars file for liferay
 liferay_archives:
+  "7.4.3.61":
+    mirror: "https://github.com/liferay/liferay-portal/releases/download"
+    version: "7.4.3.61"
+    tomcat:
+      version: "9.0.68"
+      directory: "tomcat-9.0.68"
+    release: "GA61"
+    edition: "ce"
+    bundle_type: "tomcat"
+    tag: "20230126114009163"
+    file_type: "tar.gz"
+    url_path: "7.4.3.61-ga61"
+    file: "liferay-ce-portal-tomcat-7.4.3.61-ga61-20230126114009163.tar.gz"
+    directory: "liferay-ce-portal-7.4.3.61-ga61"
+  "7.4.3.60":
+    mirror: "https://github.com/liferay/liferay-portal/releases/download"
+    version: "7.4.3.60"
+    tomcat:
+      version: "9.0.68"
+      directory: "tomcat-9.0.68"
+    release: "GA60"
+    edition: "ce"
+    bundle_type: "tomcat"
+    tag: "20230119193525693"
+    file_type: "tar.gz"
+    url_path: "7.4.3.60-ga60"
+    file: "liferay-ce-portal-tomcat-7.4.3.60-ga60-20230119193525693.tar.gz"
+    directory: "liferay-ce-portal-7.4.3.60-ga60"
+  "7.4.3.59":
+    mirror: "https://github.com/liferay/liferay-portal/releases/download"
+    version: "7.4.3.59"
+    tomcat:
+      version: "9.0.68"
+      directory: "tomcat-9.0.68"
+    release: "GA59"
+    edition: "ce"
+    bundle_type: "tomcat"
+    tag: "20230112145006317"
+    file_type: "tar.gz"
+    url_path: "7.4.3.59-ga59"
+    file: "liferay-ce-portal-tomcat-7.4.3.59-ga59-20230112145006317.tar.gz"
+    directory: "liferay-ce-portal-7.4.3.59-ga59"
   "7.4.3.9":
     mirror: "https://github.com/liferay/liferay-portal/releases/download"
     version: "7.4.3.9"
